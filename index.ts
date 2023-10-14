@@ -1,10 +1,12 @@
 import express from 'express';
 import axios from "axios";
 import querystring  from "node:querystring"
+import 'dotenv/config'
 
-const client_id = '279e84113dfb42d7be1d473636f5e0a3';
-const redirect_uri = 'http://localhost:3000/callback';
-const client_secret = '74eaf48a2b224b42ba0442407e5417e7';
+
+const client_id = process.env.client_id;
+const redirect_uri = process.env.redirect_uri;
+const client_secret = process.env.client_secret
 
 
 
@@ -24,8 +26,7 @@ app.get('/login', function(req, res) {
 
     let state = "ascvgbjuytrdsert";
     let scope = 'user-read-private user-read-email user-top-read';
-    const client_id = '279e84113dfb42d7be1d473636f5e0a3';
-    const redirect_uri = 'http://localhost:3000/callback';
+    const redirect_uri = process.env.redirect_uri;
 
     res.redirect('https://accounts.spotify.com/authorize?' +
         querystring.stringify({
